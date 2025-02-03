@@ -10,7 +10,7 @@ async function obtenerPacientes() {
 }
 
 
-async function obtenerPacientes(id) {
+async function obtenerPaciente(id) {
     const pacientes = await prisma.paciente.findUnique({
         where: { id: +id },
         include: {
@@ -30,7 +30,7 @@ async function obtenerMedicinas() {
 }
 
 
-async function obtenerMedicinas(id) {
+async function obtenerMedicina(id) {
     const medicina = await prisma.medicina.findUnique({
         where: { id: +id },
         
@@ -46,7 +46,7 @@ async function obtenerPlantas() {
 }
 
 
-async function obtenerPlantas(id) {
+async function obtenerPLanta(id) {
     const planta = await prisma.planta.findUnique({
         where: { id: +id }
     })
@@ -54,12 +54,11 @@ async function obtenerPlantas(id) {
 }
 
 
-
 export {
     obtenerPacientes,
-    obtenerPacientes,
+    obtenerPaciente,
     obtenerMedicinas,
-    obtenerMedicinas,
+    obtenerMedicina,
     obtenerPlantas,
-    obtenerPlantas
+    obtenerPLanta
 }
