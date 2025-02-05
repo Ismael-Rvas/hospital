@@ -9,7 +9,7 @@ export async function Medicinas() {
       {medicinas.map((medicina) => (
         <li key={medicina.id} className="bg-slate-200 rounded-lg p-4 shadow-md mb-4 w-full md:w-1/2 lg:w-1/3">
           <h2 className="text-2xl font-bold mb-2">
-            <Link href={`/plantas/${medicina.id}`} className="hover:underline">
+            <Link href={`/medicinas/${medicina.id}`} className="hover:underline">
               {medicina.nombre}
             </Link>
           </h2>

@@ -15,7 +15,7 @@ async function obtenerPaciente(id) {
         where: { id: +id },
         include: {
             planta: true,
-            medicina: true,
+            medicinas: true,
         }
     })
     return pacientes
@@ -46,7 +46,7 @@ async function obtenerPlantas() {
 }
 
 
-async function obtenerPLanta(id) {
+async function obtenerPlanta(id) {
     const planta = await prisma.planta.findUnique({
         where: { id: +id }
     })
@@ -60,5 +60,5 @@ export {
     obtenerMedicinas,
     obtenerMedicina,
     obtenerPlantas,
-    obtenerPLanta
+    obtenerPlanta
 }

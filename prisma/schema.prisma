@@ -28,7 +28,7 @@ model Paciente {
   fechaNacimiento  DateTime
   planta           Planta   @relation(fields: [plantaId], references: [id])
   plantaId         Int
-  medicinas        PacienteMedicina[]
+  medicinas        Medicina[]
 
 @@map("pacientes")
 }
@@ -37,19 +37,7 @@ model Medicina {
   id     Int    @id @default(autoincrement())
   nombre String
   via    String
-  pacientes PacienteMedicina[]
+  pacientes Paciente[]
 
 @@map("medicinas")
 }
-
-// tabla relacion n:m
-model PacienteMedicina {
-  paciente  Paciente @relation(fields: [pacienteId], references: [id])
-  pacienteId Int
-  medicina  Medicina @relation(fields: [medicinaId], references: [id])
-  medicinaId Int
-  @@id([pacienteId, medicinaId])
-
-@@map("pacientesMedicinas")
-}
-
