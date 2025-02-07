@@ -22,6 +22,15 @@ function PacienteModificar({ paciente, plantas }) {
                     className="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all"
                 />
             </div>
+            <select name="plantaId" defaultValue={paciente.plantaId} key={paciente.plantaId}>
+                {
+                    plantas.map(planta =>
+                        <option key={planta.id} value={planta.id}>
+                            {planta.nombre}
+                        </option>
+                    )
+                }
+            </select>
             <button
                 type="submit"
                 className="w-full py-3 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-all focus:outline-none focus:ring-2 focus:ring-yellow-500"

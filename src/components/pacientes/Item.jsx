@@ -16,6 +16,7 @@ export default async function Pacientes({ id }) {
                 <p className="text-gray-700">
                     <span className="font-bold">Fecha Nacimiento:</span> {paciente.fechaNacimiento.toLocaleDateString()}
                 </p>
+                <p className="text-gray-700"> Planta:{paciente.planta?.nombre}</p>
             </div>
         </div>
     );
