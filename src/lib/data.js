@@ -23,17 +23,21 @@ async function obtenerPaciente(id) {
 
 
 // ---------------------   MEDICINAS  -----------------------
-
 async function obtenerMedicinas() {
-    const medicinas = await prisma.medicina.findMany()
+    const medicinas = await prisma.medicina.findMany({
+    include: {
+        pacientes: true,
+    }
+    })
+    
     return medicinas
 }
-
-
 async function obtenerMedicina(id) {
     const medicina = await prisma.medicina.findUnique({
         where: { id: +id },
-        
+        include: {
+            pacientes: true
+        }
     })
     return medicina
 }

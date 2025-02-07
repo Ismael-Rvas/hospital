@@ -9,6 +9,7 @@ async function Plantas() {
 
   return (
     <div className="bg-gray-100 p-8 min-h-screen">
+      <div className="flex flex-col items-center justify-center">
       {/* Botón Insertar */}
       <Modal
         openElement={
@@ -19,6 +20,7 @@ async function Plantas() {
       >
         <PlantaInsertar />
       </Modal>
+      </div>
       <ul className="flex flex-col items-center justify-center mt-10 space-y-4">
         {plantas.map((planta) => (
           <li

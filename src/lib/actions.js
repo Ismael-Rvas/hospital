@@ -55,7 +55,7 @@ export async function insertarPaciente(formData) {
     const nombre = formData.get('nombre')
     const fechaNacimiento = new Date(formData.get('fechaNacimiento'))
     const plantaId = Number(formData.get('plantaId')) //para la actividad 8
-    
+
     await prisma.paciente.create({
         data: {
             nombre: nombre,
@@ -98,24 +98,39 @@ export async function eliminarPaciente(formData) {
 }
 
 // ------------------------------- MEDICINAS -----------------------
-
-export async function insertarMedicina(formData) {
+export async function insertarMedicina(prevState ,formData) {
     const nombre = formData.get('nombre')
     const via = formData.get('via')
-
+    const pacienteIDs = await prisma.paciente.findMany({
+        select: {
+            id: true
+        }
+    })
+    const connect = pacienteIDs.filter(paciente => formData.get(`paciente${paciente.id}`) !== null) 
+  
     await prisma.medicina.create({
         data: {
             nombre: nombre,
-            via: via
+            via: via,
+            pacientes: {
+                connect: connect,
+            },
         }
     })
-    revalidatePath('/medicinas')
+    revalidatePath('/medicinas');
+    return {success:'la medicina se inserto correctamente'}
 }
-
-export async function modificarMedicina(formData) {
+export async function modificarMedicina(prevState ,formData) {
     const id = Number(formData.get('id'))
     const nombre = formData.get('nombre')
     const via = formData.get('via')
+    const pacienteIDs = await prisma.paciente.findMany({
+        select: {
+            id: true
+        }
+    })
+    const connect = pacienteIDs.filter(paciente => formData.get(`paciente${paciente.id}`) !== null) 
+    const disconnect = pacienteIDs.filter(paciente => formData.get(`paciente${paciente.id}`) === null) 
 
     await prisma.medicina.update({
         where: {
@@ -123,15 +138,18 @@ export async function modificarMedicina(formData) {
         },
         data: {
             nombre: nombre,
-            via: via
+            via: via,
+            pacientes: {
+                connect: connect,
+                disconnect: disconnect
+            },
         }
     })
     revalidatePath('/medicinas')
+    return {success:'la medicina se inserto correctamente'}
 }
-
 export async function eliminarMedicina(formData) {
     const id = Number(formData.get('id'))
-
     await prisma.medicina.delete({
         where: {
             id: id
