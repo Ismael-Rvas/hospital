@@ -1,4 +1,4 @@
-import { Medicinas as Medicinas } from "@/components/pacientes/Lista";
+import Pacientes from "@/components/pacientes/Lista";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -24,7 +24,7 @@ function PaginaPacientes() {
           </div>
         }
       >
-        <Medicinas />
+        <Pacientes />
       </Suspense>
     </div>
   );

@@ -1,4 +1,4 @@
-import {Plantas} from "@/components/plantas/Lista";
+import Plantas from "@/components/plantas/Lista";
 import Link from "next/link";
 import { Suspense } from "react";
 

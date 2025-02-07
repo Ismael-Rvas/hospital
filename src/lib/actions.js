@@ -53,24 +53,22 @@ export async function eliminarPlanta(formData) {
 
 export async function insertarPaciente(formData) {
     const nombre = formData.get('nombre')
-    const fecha_nacimiento = new Date(formData.get('fecha_nacimiento'))
-    const plantaId = Number(formData.get('plantaId'))
+    const fechaNacimiento = new Date(formData.get('fechaNacimiento'))
 
     await prisma.paciente.create({
         data: {
             nombre: nombre,
-            fecha_nacimiento: fecha_nacimiento,
-            plantaId: plantaId,
+            fechaNacimiento: fechaNacimiento,
         }
     })
 
     revalidatePath('/pacientes')
 }
 export async function modificarPaciente(formData) {
+    
     const id = Number(formData.get('id'))
     const nombre = formData.get('nombre')
-    const fecha_nacimiento = new Date(formData.get('fechanNacimiento'))
-    const plantaId = Number(formData.get('plantaId'))
+    const fechaNacimiento = new Date(formData.get('fechaNacimiento'))
 
     await prisma.paciente.update({
         where: {
@@ -78,8 +76,7 @@ export async function modificarPaciente(formData) {
         },
         data: {
             nombre: nombre,
-            fecha_nacimiento: fecha_nacimiento,
-            plantaId: plantaId,
+            fechaNacimiento: fechaNacimiento,
         }
     })
     revalidatePath('/pacientes')
