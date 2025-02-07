@@ -68,12 +68,7 @@ export async function Medicinas() {
             </div>
 
             <p className="text-gray-600 italic mb-4">{medicina.via}</p>
-            <p className="text-gray-600 italic mb-4">
-              Pacientes:{" "}
-              {
-                medicina.pacientes.map((paciente) => paciente.nombre).join(", ") //join convierte un array en un string
-              }
-            </p>
+            
           </li>
         ))}
       </ul>

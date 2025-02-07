@@ -4,6 +4,7 @@ import { useEffect, useId, useActionState } from "react";
 import { toast } from "sonner";
 
 function MedicinaInsertar({ pacientes }) {
+  
   const formId = useId();
   const [state, action, pending] = useActionState(insertarMedicina, {});
   useEffect(() => {
@@ -14,12 +15,19 @@ function MedicinaInsertar({ pacientes }) {
   }, [state]);
 
   return (
-    <form action={action} id={formId} className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md mx-auto">
+    <form
+      action={action}
+      id={formId}
+      className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md mx-auto"
+    >
       <h2 className="text-2xl font-semibold text-gray-900 mb-4 text-center">
         Agregar Nueva Medicina
       </h2>
       <div className="mb-4">
-        <label htmlFor="nombre" className="block text-gray-700 font-medium mb-2">
+        <label
+          htmlFor="nombre"
+          className="block text-gray-700 font-medium mb-2"
+        >
           Nombre
         </label>
         <input

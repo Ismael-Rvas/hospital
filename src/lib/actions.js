@@ -146,14 +146,14 @@ export async function modificarMedicina(prevState ,formData) {
         }
     })
     revalidatePath('/medicinas')
-    return {success:'la medicina se inserto correctamente'}
+    return {success:'la medicina se modifico correctamente'}
 }
-export async function eliminarMedicina(formData) {
+export async function eliminarMedicina(prevState, formData) {
     const id = Number(formData.get('id'))
     await prisma.medicina.delete({
         where: {
             id: id
         }
     })
-    revalidatePath('/medicinas')
+    return {success:'la medicina se elimino'}
 }
